@@ -82,6 +82,8 @@ Install necessary dependencies using `requirements.py` script. Run the following
 ```sh
 python3 requirements.py
 ```
+
+Then clone the repository to the correct location.
 If you're using `cmd.exe`:
 
 ```
