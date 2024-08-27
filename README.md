@@ -78,6 +78,10 @@ git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HO
 
 <details><summary> Windows </summary>
 
+Install necessary dependencies using `requirements.py` script. Run the following command in `cmd.exe` or `powershell.exe`:
+```sh
+  python3 requirements.py
+```
 If you're using `cmd.exe`:
 
 ```
