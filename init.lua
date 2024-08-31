@@ -502,6 +502,12 @@ require('lazy').setup({
     end,
   },
   {
+    'smolck/command-completion.nvim',
+    config = function()
+      require('command-completion').setup()
+    end,
+  },
+  {
     'github/copilot.vim',
   },
   {
@@ -544,7 +550,7 @@ require('lazy').setup({
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
 
-      -- Allows extra capabilities provided by nvim-cmp
+      -- Allows extra capabilities provided by nvim-cmp,
       'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
