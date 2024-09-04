@@ -7,6 +7,15 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
+        python = { 'ruff' },
+        javascript = { 'eslint' },
+        typescript = { 'eslint' },
+        typescriptreact = { 'eslint' },
+        javascriptreact = { 'eslint' },
+        json = { 'jsonlint' },
+        yaml = { 'yamllint' },
+        cpp = { 'cpplint' },
+        c = { 'cpplint' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,

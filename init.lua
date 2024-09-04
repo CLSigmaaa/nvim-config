@@ -103,9 +103,18 @@ vim.g.have_nerd_font = true
 
 -- Make line numbers default
 vim.opt.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
 vim.opt.relativenumber = true
+
+vim.opt.whichwrap:append '<>[]hl'
+
+-- Indent settings
+vim.o.expandtab = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
+vim.o.smartindent = true
+
+vim.opt.fillchars = { eob = ' ' }
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -469,60 +478,6 @@ require('lazy').setup({
       end, { desc = '[F]ind [N]eovim files' })
     end,
   },
-  {
-    'NvChad/nvterm',
-    config = function()
-      require('nvterm').setup()
-    end,
-  },
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- Icônes pour les fichiers et dossiers
-    config = function()
-      require('nvim-tree').setup {
-        -- Configuration par défaut ou personnalisée
-        view = {
-          width = 30,
-          side = 'left',
-        },
-        renderer = {
-          icons = {
-            show = {
-              git = true,
-              folder = true,
-              file = true,
-              folder_arrow = true,
-            },
-          },
-        },
-        git = {
-          enable = true,
-        },
-      }
-    end,
-  },
-  {
-    'smolck/command-completion.nvim',
-    config = function()
-      require('command-completion').setup()
-    end,
-  },
-  {
-    'github/copilot.vim',
-  },
-  {
-    'CopilotC-Nvim/CopilotChat.nvim',
-    branch = 'canary',
-    dependencies = {
-      { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
-      { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
-    },
-    opts = {
-      debug = false, -- Enable debugging
-      -- See Configuration section for rest
-    },
-    -- See Commands section for default commands if you want to lazy load on them
-  },
   -- LSP Plugins
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -749,19 +704,23 @@ require('lazy').setup({
         'solc', -- Solidity
 
         -- Linters
+        'eslint', -- JavaScript/TypeScript
         'eslint_d', -- JavaScript/TypeScript
+        'ruff', -- Python
         'flake8', -- Python
         'stylelint', -- CSS/SCSS
-        'mypy', -- Python type checking
+        'markdownlint', -- Markdown
+        'solhint', -- Solidity
 
         -- Formatters
+        'prettier',
         'prettierd', -- JavaScript/TypeScript (daemon for better performance)
         'black', -- Python
         'rustfmt', -- Rust
         'clang-format', -- C/C++
         'stylua', -- Lua
-        'htmlbeautifier', -- HTML
         'yamllint', -- YAML
+        'jsonlint',
         'solhint', -- Solidity
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -1075,7 +1034,6 @@ require('lazy').setup({
   require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -1083,7 +1041,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
