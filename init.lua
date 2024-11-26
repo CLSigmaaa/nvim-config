@@ -269,7 +269,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -702,6 +702,7 @@ require('lazy').setup({
         'vimls', -- VimScript
         'yamlls', -- YAML
         'solc', -- Solidity
+        'tailwindcss-language-server',
 
         -- Linters
         'eslint', -- JavaScript/TypeScript
@@ -825,7 +826,14 @@ require('lazy').setup({
             luasnip.lsp_expand(args.body)
           end,
         },
+        formatting = {
+          format = function(entry, vim_item)
+            vim_item.menu = nil -- Supprime la colonne "menu" si inutile
+            return vim_item
+          end,
+        },
         completion = { completeopt = 'menu,menuone,noinsert' },
+        
 
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
