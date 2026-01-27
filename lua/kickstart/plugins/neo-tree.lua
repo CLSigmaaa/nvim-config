@@ -9,11 +9,19 @@ return {
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
   },
-  cmd = 'Neotree',
+  lazy = false,
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal' },
+    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
+    -- 1. C'est ICI qu'il faut lister les sources actives
+    sources = {
+      "filesystem",
+      "buffers",
+      "git_status",
+      "document_symbols",
+    },
+    
     filesystem = {
       window = {
         mappings = {
