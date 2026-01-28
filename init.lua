@@ -348,7 +348,7 @@ require('lazy').setup({
 
         -- `build` is used to run some command when the plugin is installed/updated.
         -- This is only run then, not every time Neovim starts up.
-        uild = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
 
         -- `cond` is a condition used to determine whether this plugin should be
         -- installed and loaded.
@@ -606,7 +606,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {}, 
+        -- ts_ls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -868,7 +868,34 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     config = function()
-      local filetypes = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'typescript', 'javascript', 'vue', 'tsx', 'sql', 'rust', 'dockerfile', 'python', 'css', 'scss', 'json', 'yaml', 'regex', 'comment', 'gitignore'  }
+      local filetypes = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'typescript',
+        'javascript',
+        'vue',
+        'tsx',
+        'sql',
+        'rust',
+        'dockerfile',
+        'python',
+        'css',
+        'scss',
+        'json',
+        'yaml',
+        'regex',
+        'comment',
+        'gitignore',
+      }
       require('nvim-treesitter').install(filetypes)
       vim.api.nvim_create_autocmd('FileType', {
         pattern = filetypes,
@@ -897,7 +924,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!

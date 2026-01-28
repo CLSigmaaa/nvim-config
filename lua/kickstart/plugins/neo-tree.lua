@@ -11,23 +11,15 @@ return {
   },
   lazy = false,
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<C-n>', ':Neotree toggle<CR>', desc = 'NeoTree toggle', silent = true },
+    { '<leader>ds', ':Neotree document_symbols<CR>', desc = 'NeoTree document symbols', silent = true },
+    { '<leader>bb', ':Neotree buffers<CR>', desc = 'NeoTree buffers', silent = true },
   },
   opts = {
-    -- 1. C'est ICI qu'il faut lister les sources actives
     sources = {
       "filesystem",
       "buffers",
-      "git_status",
       "document_symbols",
-    },
-    
-    filesystem = {
-      window = {
-        mappings = {
-          ['\\'] = 'close_window',
-        },
-      },
     },
   },
 }
